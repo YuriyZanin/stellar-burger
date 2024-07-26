@@ -42,7 +42,8 @@ const constructorSlice = createSlice({
       state.ingredients[index + 1] = swp;
     },
     clearIngredients: (state) => {
-      state = initialState;
+      state.ingredients = [];
+      state.bun = null;
     }
   },
   selectors: {
