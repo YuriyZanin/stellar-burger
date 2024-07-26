@@ -14,6 +14,11 @@ beforeEach(() => {
   cy.visit('http://localhost:4000');
 });
 
+afterEach(() => {
+  window.localStorage.clear();
+  cy.clearAllCookies();
+});
+
 describe('проверяем доступность приложения', function () {
   it('сервис должен быть доступен по адресу localhost:4000', function () {
     cy.visit('http://localhost:4000');
@@ -82,11 +87,11 @@ describe('проверка работы модальных окон', function (
     cy.get('#modals').should('be.empty');
   });
 
-  it('закрытие по оверлею', function() {
+  it('закрытие по оверлею', function () {
     cy.get('#modals').should('be.empty');
     cy.get('[data-cy=643d69a5c3f7b9001cfa0941]').children('a').click();
     cy.get('#modals').should('be.not.empty');
     cy.get('[data-cy=modal-overlay]').click({ force: true });
     cy.get('#modals').should('be.empty');
-  })
+  });
 });
