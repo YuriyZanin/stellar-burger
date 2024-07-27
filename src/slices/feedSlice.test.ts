@@ -1,14 +1,7 @@
-import { fetchFeeds } from './feedSlice';
+import { fetchFeeds, initialState } from './feedSlice';
 import feedSliceReducer from './feedSlice';
 
 describe('тест асинхронных экшенов', () => {
-  const initialState = {
-    orders: [],
-    total: 0,
-    totalToday: 0,
-    error: null
-  };
-
   describe('запрос всех заказов', () => {
     it('тест fetchFeeds.fulfilled', () => {
       const action = {

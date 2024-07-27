@@ -2,16 +2,11 @@ import { configureStore } from '@reduxjs/toolkit';
 import ingredientSliceReducer, {
   fetchIngredients,
   selectIngredients,
-  selectIsLoading
+  selectIsLoading,
+  initialState
 } from './ingredientSlice';
 
 describe('тест асинхронных экшенов', () => {
-  const initialState = {
-    ingredients: [],
-    isLoading: false,
-    error: null
-  };
-
   describe('запрос всех ингредиентов', () => {
     it('тест fetchIngredients.pending', () => {
       const action = {

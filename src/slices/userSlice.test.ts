@@ -1,13 +1,15 @@
 import { error } from 'console';
-import { fetchUser, login, logout, register, updateProfile } from './userSlice';
+import {
+  fetchUser,
+  login,
+  logout,
+  register,
+  updateProfile,
+  initialState
+} from './userSlice';
 import userSliceReducer from './userSlice';
 
 describe('тест асинхронных экшенов', () => {
-  const initialState = {
-    user: null,
-    isAuthChecked: false
-  };
-
   describe('загрузка пользователя', () => {
     it('тест fetchUser.pending', () => {
       const action = {

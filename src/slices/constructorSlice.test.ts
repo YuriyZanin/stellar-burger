@@ -7,7 +7,7 @@ import constructorSliceReducer, {
 } from './constructorSlice';
 
 describe('тесты синхронных экшенов', () => {
-  const initialState = {
+  const testState = {
     bun: null,
     ingredients: [
       {
@@ -72,7 +72,7 @@ describe('тесты синхронных экшенов', () => {
       image_large: 'https://code.s3.yandex.net/react/code/sauce-04-large.png'
     };
     const newState = constructorSliceReducer(
-      initialState,
+      testState,
       addIngredient(newIngredient)
     );
 
@@ -97,7 +97,7 @@ describe('тесты синхронных экшенов', () => {
     };
 
     const newState = constructorSliceReducer(
-      initialState,
+      testState,
       addIngredient(newBun)
     );
 
@@ -108,7 +108,7 @@ describe('тесты синхронных экшенов', () => {
 
   it('удаление ингредиента', () => {
     const newState = constructorSliceReducer(
-      initialState,
+      testState,
       removeIngredient('3')
     );
 
@@ -117,28 +117,28 @@ describe('тесты синхронных экшенов', () => {
   });
 
   it('перемещение ингредиента выше', () => {
-    const newState = constructorSliceReducer(initialState, moveUpIngredient(1));
+    const newState = constructorSliceReducer(testState, moveUpIngredient(1));
 
     const { ingredients } = newState;
     expect(ingredients.length).toBe(3);
-    expect(ingredients[0]).toEqual(initialState.ingredients[1]);
-    expect(ingredients[1]).toEqual(initialState.ingredients[0]);
+    expect(ingredients[0]).toEqual(testState.ingredients[1]);
+    expect(ingredients[1]).toEqual(testState.ingredients[0]);
   });
 
   it('перемещение ингредиента ниже', () => {
     const newState = constructorSliceReducer(
-      initialState,
+      testState,
       moveDownIngredient(0)
     );
 
     const { ingredients } = newState;
     expect(ingredients.length).toBe(3);
-    expect(ingredients[1]).toEqual(initialState.ingredients[0]);
-    expect(ingredients[0]).toEqual(initialState.ingredients[1]);
+    expect(ingredients[1]).toEqual(testState.ingredients[0]);
+    expect(ingredients[0]).toEqual(testState.ingredients[1]);
   });
 
   it('удаление всех ингредиентов', () => {
-    const newState = constructorSliceReducer(initialState, clearIngredients());
+    const newState = constructorSliceReducer(testState, clearIngredients());
 
     const { ingredients } = newState;
     expect(ingredients.length).toBe(0);

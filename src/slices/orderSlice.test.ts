@@ -1,13 +1,12 @@
-import { createOrder, fetchOrders, findOrderById } from './orderSlice';
+import {
+  createOrder,
+  fetchOrders,
+  findOrderById,
+  initialState
+} from './orderSlice';
 import orderSliceReducer from './orderSlice';
 
 describe('тест асинхронных экшенов', () => {
-  const initialState = {
-    orders: [],
-    orderRequest: false,
-    orderModalData: null
-  };
-
   describe('запрос всех заказов', () => {
     it('тест fetchOrders.fulfilled', () => {
       const action = {
